@@ -1,18 +1,73 @@
 body {
   font-family: Arial;
+  margin: 0;
+  background: white;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  gap: 15px;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
 .card {
-  width: 120px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: center;
-  border-radius: 10px;
-  background: #f9f9f9;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
 }
+
+.imgarea {
+  background: #F2F2F2;
+  border-radius: 5px;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 🔥 clave para que no se mueva */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgarea img {
+  width: 80%;
+}
+
+.info {
+  padding: 10px 5px;
+}
+
+.id {
+  color: #919191;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.name {
+  color: #313131;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.types {
+  display: flex;
+  gap: 5px;
+}
+
+.type {
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  color: white;
+  text-align: center;
+}
+
+.type.grass { background: #78C850; }
+.type.poison { background: #A040A0; }
+.type.fire { background: #F08030; }
+.type.water { background: #6890F0; }
+.type.electric { background: #F8D030; }
+.type.bug { background: #A8B820; }
+.type.normal { background: #A8A878; }
