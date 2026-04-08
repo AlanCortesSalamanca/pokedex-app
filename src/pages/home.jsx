@@ -3,6 +3,7 @@ import PokemonCard from "../components/PokemonCard";
 
 function Home(){
     const [pokemons, setPokemons] = useState([]);
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
@@ -11,6 +12,11 @@ function Home(){
         .then(err => console.error(err));
     }, []);
 
+    const filteredPokemons = pokemons.filter(pokemon =>
+        pokemon.name.toLowerCase().includes(search.toLowerCase()) ||
+        pokemon.url.includes(search)
+    );
+
     return(
         <div>
             
@@ -18,8 +24,15 @@ function Home(){
                 Lista de Pokémon
             </h2>
 
+            <input
+                type="text"
+                placeholder="Buscar Pokemon..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
+
             <div className="container">
-                {pokemons.map((pokemon,index) =>(
+                {filteredPokemons.map((pokemon,index) =>(
                     <PokemonCard
                     key={index}
                     name={pokemon.name}
