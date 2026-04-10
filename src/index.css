@@ -24,14 +24,15 @@ body {
   background: #F2F2F2;
   border-radius: 5px;
   width: 100%;
-  aspect-ratio: 1 / 1; /* 🔥 clave para que no se mueva */
+  aspect-ratio: 1 / 1; 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .imgarea img {
-  width: 80%;
+  width: 100%;
+  margin: 0 0 0 0;
 }
 
 .info {
@@ -41,7 +42,7 @@ body {
 .id {
   color: #919191;
   font-size: 12px;
-  margin: 5px 0;
+  margin: 0 0;
 }
 
 .name {
@@ -49,51 +50,72 @@ body {
   font-weight: bold;
   margin-bottom: 5px;
   text-transform: capitalize;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .types {
   display: flex;
   gap: 5px;
+  margin-top: 0;
 }
 
 .type {
-  padding: 4px 8px;
+  list-style: none;
   border-radius: 3px;
-  font-size: 11px;
-  color: white;
+  line-height: 18px;
+  width: 40%; 
+  height: 15px;
+  float: left;
   text-align: center;
+  color: #fff;
+  font-size: 11px;
+  box-sizing: border-box;
 }
 
-.type.grass { background: #78C850; }
-.type.poison { background: #A040A0; }
+
+
+.type.normal { background: #A8A878; }
 .type.fire { background: #F08030; }
 .type.water { background: #6890F0; }
 .type.electric { background: #F8D030; }
+.type.grass { background: #78C850; color: black }
+.type.ice { background: #98D8D8; }
+.type.fighting { background: #C03028; }
+.type.poison { background: #A040A0; }
+.type.ground { background: #E0C068; }
+.type.flying { background: #A890F0; }
+.type.psychic { background: #F85888; }
 .type.bug { background: #A8B820; }
-.type.normal { background: #A8A878; }
-
-
+.type.rock { background: #B8A038; }
+.type.ghost { background: #705898; }
+.type.dragon { background: #7038F8; }
+.type.dark { background: #705848; }
+.type.steel { background: #B8B8D0; }
+.type.fairy { background: #EE99AC; }
 
 .filter-h {
   width: 100%;
-  padding: 40px 20px;
-  background: #313131;
+  background: #2B2B2B;
   display: flex;
   justify-content: center;
+  
 }
 
 .filter-container {
-  width: 100%;
+  width: 80%;
   max-width: 1024px;
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
+  margin-top: 5px;
+  
 }
 
-/* 🔥 LEFT */
 .filter-left {
   flex: 1;
   min-width: 300px;
+  
 }
 
 .filter-left label {
@@ -101,13 +123,14 @@ body {
   margin-bottom: 8px;
   font-weight: bold;
   color: white
+  
 }
 
-/*  INPUT + BUTTON */
 .search-row {
   display: flex;
   gap: 10px;
   position: relative;
+  
 }
 
 .search-row input {
@@ -125,7 +148,7 @@ body {
   height: 48px;
   border: none;
   border-radius: 5px;
-  background: #ee6b2f;
+  background: #F15E34;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -165,14 +188,12 @@ body {
   background: #eee;
 }
 
-/* 🔥 TEXTO */
 .subtitle {
   margin-top: 10px;
   font-size: 14px;
   color: #ccc;
 }
 
-/* 🔥 RIGHT */
 .filter-right {
   flex: 1;
   min-width: 300px;
@@ -182,29 +203,82 @@ body {
   background: #4caf50;
   padding: 25px;
   border-radius: 8px;
+  margin-top: 20px;
 }
 
 .search-banner h2 {
   margin: 0;
   font-size: 18px;
   font-weight: normal;
+  color: white
 }
 
-/* 🔥 BOTÓN */
 button {
   display: block;
   margin: 20px auto;
   padding: 12px 20px;
   border-radius: 5px;
   border: none;
-  background: #3b4cca;
+  background: #159ECE;
   color: white;
   cursor: pointer;
 }
 
-/* 🔥 RESPONSIVE */
+.filters {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto; 
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.surprise-btn,
+.sort {
+  flex: 1; 
+  height: 48px;
+}
+
+.surprise-btn {
+  background: #159ECE;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  
+}
+
+.sort {
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: none;
+  background: #2B2B2B;
+  color: white;
+
+}
+
 @media (max-width: 768px) {
-  .filter-container {
+  .filters {
     flex-direction: column;
+    gap: 10px; 
+  }
+  .search-banner {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  .surprise-btn,
+  .sort {
+    width: 60%;
+  }
+
+  .sort {
+    margin: 0 0 0 20%;
+  }
+
+  .surprise-btn {
+    margin: 0 0 0 20%;
   }
 }

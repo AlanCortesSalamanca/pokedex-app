@@ -6,6 +6,7 @@ function Home(){
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
     const [visibleCount, setVisibleCount] = useState(20);
+    const [sortOrder, setSortOrder] = useState("numberAsc");
 
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon-species?limit=1100")
@@ -41,7 +42,34 @@ function Home(){
         setVisibleCount(20);
     };
 
-    const dataToShow = results.length > 0 ? results : allPokemons;
+    
+    const handleSurprise = () => {
+        const randomIndex = Math.floor(Math.random() * allPokemons.length);
+        const randomPokemon = allPokemons[randomIndex];
+        
+        setResults([randomPokemon]);
+    };
+
+    const sortedData = [...(results.length > 0 ? results : allPokemons)].sort((a,b) => {
+        const idA = Number(a.url.split("/")[6]);
+        const idB = Number(b.url.split("/")[6]);
+
+        switch(sortOrder){
+            case "numberAsc":
+                return idA - idB;
+            case "numberDesc":
+                return idB - idA;
+            case "nameAsc":
+                return a.name.localeCompare(b.name);
+            case "nameDesc":
+                return b.name.localeCompare(a.name);
+            default:
+                return 0;
+        }
+    });
+
+    const dataToShow = sortedData;
+
 
     return(
         <div>
@@ -50,7 +78,7 @@ function Home(){
                 <div className="filter-container">
 
                     <div className="filter-left">
-                        <label htmlFor="searchInput"> Nombre o número</label>
+                        <label htmlFor="searchInput"> Name or Number</label>
 
                         <div className="search-row">
                             <input 
@@ -66,7 +94,7 @@ function Home(){
                             
 
                             <button onClick={handleSearch}>
-                                Buscar
+                                search
                             </button>
                             
                             {search && (
@@ -90,7 +118,7 @@ function Home(){
                        
 
                         <p className="subtitle">
-                            ¡Utiliza la busqueda avanzada para explorar Pokemon por tipo, debilidad, habilidad y mucho mas!
+                            Use the Advanced Search to Explore Pokémon by type, weakness, Ability, and more!!!    
                         </p>
 
                     </div>
@@ -98,16 +126,33 @@ function Home(){
                     <div className="filter-right">
                         <div className="search-banner">
                             <h2>
-                                Busca un pokémon por su nombre o utilizando su número en la Pokedex Nacional
+                                Search for a Pokémon by name or using its National Pokédex number.
                             </h2>
                         </div>
                     </div>
                 </div>
             </header>
-            
-            
 
 
+            <div className="container">
+                <section className="filters">
+                    <button className="surprise-btn" onClick={handleSurprise}>
+                        surprise Me!
+                    </button>
+
+
+                        <select className="sort"
+                            value={sortOrder}
+                            onChange={(e) => setSortOrder(e.target.value)}>
+                            
+                            <option value="numberAsc">Lower Number (First)</option>
+                            <option value="numberDesc">Highest Number (First)</option>
+                            <option value="nameAsc">A-Z</option>
+                            <option value="nameDesc">Z-A</option>
+
+                        </select>
+                </section>
+            </div>
             <div className="container">
                 {dataToShow.slice(0, visibleCount).map((pokemon) => {
                     const id = pokemon.url.split("/")[6];          
@@ -119,10 +164,11 @@ function Home(){
                     );
                 })}
             </div>
+            
 
             {visibleCount < dataToShow.length && (
                 <button onClick={() => setVisibleCount(prev => prev + 20)}>
-                    Mostrar Mas Pokémons
+                    Load more Pokémon
                 </button>
             )}
 
