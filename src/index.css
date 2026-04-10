@@ -71,3 +71,140 @@ body {
 .type.electric { background: #F8D030; }
 .type.bug { background: #A8B820; }
 .type.normal { background: #A8A878; }
+
+
+
+.filter-h {
+  width: 100%;
+  padding: 40px 20px;
+  background: #313131;
+  display: flex;
+  justify-content: center;
+}
+
+.filter-container {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* 🔥 LEFT */
+.filter-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.filter-left label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: white
+}
+
+/*  INPUT + BUTTON */
+.search-row {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.search-row input {
+  flex: 1;
+  height: 48px;
+  padding: 0 15px;
+  border-radius: 5px;
+  border: 3px solid #616161;
+  font-size: 16px;
+}
+
+.search-row button {
+  padding: 0 0;
+  width: 120px;
+  height: 48px;
+  border: none;
+  border-radius: 5px;
+  background: #ee6b2f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  display: inline-flex; 
+  align-items: center;  
+  justify-content: center;
+  margin: 0;            
+  padding: 0 20px;      
+}
+
+
+.search-row button:hover {
+  opacity: 0.9;
+}
+
+.suggestions {
+  position: absolute;   
+  top: 100%;            
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #eee;
+}
+
+/* 🔥 TEXTO */
+.subtitle {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* 🔥 RIGHT */
+.filter-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.search-banner {
+  background: #4caf50;
+  padding: 25px;
+  border-radius: 8px;
+}
+
+.search-banner h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* 🔥 BOTÓN */
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+  background: #3b4cca;
+  color: white;
+  cursor: pointer;
+}
+
+/* 🔥 RESPONSIVE */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+  }
+}
