@@ -5,8 +5,8 @@ import PokemonDetail from "./pages/PokemonDetail"
 function App() {
   return (
     
-    <BrowserRouter basename="/podedex-app">
-      <Routes>
+    <BrowserRouter >
+      <Routes basename={import.meta.env.BASE_URL}>
         <Route path="/" element={<Home />} />
         <Route path="/pokemon/:id" element={<PokemonDetail />} />
       </Routes>
