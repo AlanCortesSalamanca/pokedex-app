@@ -1,7 +1,9 @@
 import {useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 function PokemonCard({id}){
     const [pokemon, setPokemon] = useState(undefined);
+    const navigate = useNavigate();
     
     useEffect(() => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -23,7 +25,11 @@ function PokemonCard({id}){
     
 
     return(
-        <div className="card">
+        <div 
+            className="card"
+            onClick={() => navigate(`/pokemon/${id}`)}
+            style={{cursor: "pointer"}}
+        >
             <div className="imgarea">
                 <img src={imageUrl} alt={id} />
             </div>
