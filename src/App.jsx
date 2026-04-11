@@ -5,7 +5,7 @@ import PokemonDetail from "./pages/PokemonDetail"
 function App() {
   return (
     
-    <BrowserRouter>
+    <BrowserRouter basename="/podedex-app">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pokemon/:id" element={<PokemonDetail />} />
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;  
