@@ -2,7 +2,22 @@ Pokédex App
 
 Aplicación web desarrollada con React que consume la API pública de Pokémon para mostrar información detallada de cada Pokémon, incluyendo estadísticas, tipos, debilidades y evoluciones.
 
- Tecnologías utilizadas
+Live Demo
+https://alancortessalamanca.github.io/pokedex-app/
+
+Instrucciones
+Para correr el proyecto de forma local:
+npm install
+npm run dev
+
+Para generar build de producción:
+npm run build
+
+Para deploy en GitHub Pages:
+npm run deploy
+
+
+Tecnologías utilizadas
 React
 React Router
 JavaScript (ES6+)
